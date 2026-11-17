@@ -31,5 +31,18 @@ The concepts contain AI-generated lettering and UI details. Rebuild all live tex
 - Respect reduced-motion preferences and provide a non-WebGL fallback.
 - Treat numeric values and project claims in mockups as visual placeholders until verified.
 
+## Implementation documents
+
+- `asset-bible.md` — locked character, robot, portal and world identity.
+- `asset-inventory.md` / `asset-manifest.json` — status of every authored and planned asset.
+- `project-art-spec.md` — eight project vignette files, artboards, palette and responsive crops.
+- `icon-spec.md` — custom SVG icon geometry, colors and display sizes.
+- `visual-spec.md`, `colors.md`, `typography.md` and `motion-spec.md` — UI system.
+- `quality-checklist.md` — release verification gates.
+
+## Current implementation
+
+The hero uses a procedural React Three Fiber scene with a seated creator blockout, workstation, laptop, robot companion, portal rings and floating islands. The project archive has eight individual authored SVG concept vignettes. These are integrated runtime assets; they do not replace the planned final Blender / GLB models or verified product screenshots.
+
 ## Image files
 The originals are attached to the conversation. Their metadata and extracted visual palette are in `references.md`. The binary originals still need to be copied into `public/design-references/` before the repository can serve them; this manifest does not pretend that the binary files have already been committed.
