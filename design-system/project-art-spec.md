@@ -26,7 +26,7 @@ Rendering: Next.js `Image`, `unoptimized`, `object-fit: cover`
 | Chess Game | `public/projects/chess-scene.svg` | Perspective chessboard with ivory and cream pieces | `#F1E4FF`, `#A18AD6`, `#F7F2FF`, `#F4D9B9` |
 | IO Game | `public/projects/io-game-scene.svg` | Arena ring, player silhouette, green floating platform | `#DFF0D7`, `#7DBB9E`, `#617D7A`, `#4F6DD2` |
 | Handmade Keychains | `public/projects/keychains-scene.svg` | Two heart-shaped charms, gold rings, blush display | `#FFE3F0`, `#D69ACB`, `#D7A94F`, `#FFFFFF` |
-| V.N. ODEDRA Vision | `public/projects/vn-odedra-scene.svg` | Desktop website preview, clean browser frame, violet line graphic | `#DCE CFF` (approx. `#DCEBFF`), `#8998D9`, `#242942`, `#8B6FF0` |
+| V.N. ODEDRA Vision | `public/projects/vn-odedra-scene.svg` | Desktop website preview, clean browser frame, violet line graphic | `#DCE CFF` (approx. `#DCECFF`), `#8998D9`, `#242942`, `#8B6FF0` |
 
 ## Responsive dimensions
 
