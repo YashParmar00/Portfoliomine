@@ -49,3 +49,27 @@ The scene includes a camera, ambient / directional / point lighting, pointer par
 ## Existing icon family
 
 The current repository includes `public/icons/yp-mark.svg`, `automation.svg`, `cube.svg`, `gamepad.svg` and `sparkle.svg`. Keep their visual weight and pastel accent language consistent when extending the icon set.
+
+
+## Project universe illustrations — PROJECT-VIGNETTES-01
+
+All eight project tiles now use separate hand-authored SVG artwork. Each asset uses a 720 × 440 viewBox (18:11), scales with `object-fit: cover`, and is paired with live HTML project titles / descriptions. The `CONCEPT ART` label makes clear that these are illustrations, not product screenshots.
+
+| File | Subject | Dominant colors | Secondary accents |
+|---|---|---|---|
+| `aicaption-scene.svg` | Video editor workstation / timeline | lavender `#E6D8FF`, violet `#9278E8` | navy `#252746`, ice blue `#A8D8FF` |
+| `preta-scene.svg` | Personalization analytics screen | sky `#D8EFFF`, periwinkle `#829FE8` | navy `#283452`, violet `#7B67E6` |
+| `printoll-scene.svg` | Custom T-shirt product display | peach `#FFE6D8`, rose `#ED9F9E` | ivory `#FFFFFF`, warm pink `#F7D5D0` |
+| `auramarts-scene.svg` | Multi-vendor storefront | mint `#DFF7ED`, teal `#80CBB9` | rose `#F19BC2`, ivory `#FDF8EF` |
+| `chess-scene.svg` | Chess board and pieces | pale lavender `#F1E4FF`, purple `#A18AD6` | ivory `#F7F2FF`, warm cream `#F4D9B9` |
+| `io-game-scene.svg` | Multiplayer arena / player | pale green `#DFF0D7`, sage `#7DBB9E` | slate `#617D7A`, blue `#4F6DD2` |
+| `keychains-scene.svg` | Handmade heart keychains | blush `#FFE3F0`, mauve `#D69ACB` | gold `#D7A94F`, white `#FFFFFF` |
+| `vn-odedra-scene.svg` | Framer / website on desktop | ice blue `#DCE CFF` (approx. `#DCE CFF`), periwinkle `#8998D9` | navy `#242942`, violet `#8B6FF0` |
+
+### Usage and crop rules
+
+- Project tile artwork: responsive width, desktop target height 150 px, mobile 112 px, narrow single-column 155 px.
+- Project detail artwork: 175 px high, full card width.
+- SVG is served as vector and uses `unoptimized` Next Image to avoid unnecessary raster conversion.
+- DOM text stays outside artwork; no embedded project names, metrics, claims or fake interface labels.
+- Each card retains its own tone class, category, project status and technology stack.
