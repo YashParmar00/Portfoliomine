@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description:
     "Yash Parmar builds software products, AI tools, automation systems, games and 3D experiences. Explore selected projects, capabilities and experiments.",
   applicationName: "Yash Parmar Portfolio",
+  icons: { icon: "/icons/yp-mark.svg", shortcut: "/icons/yp-mark.svg" },
   keywords: [
     "Yash Parmar", "Software Developer", "MERN Stack Developer",
     "AI Tools", "Workflow Automation", "Game Development",
