@@ -71,7 +71,7 @@ function FloatingWorld() {
   );
 }
 
-const PortfolioWorld3D = dynamic(() => import("@/components/portfolio-world-3d"), { ssr: false, loading: () => <PortfolioWorld3D /> });
+const PortfolioWorld3D = dynamic(() => import("@/components/portfolio-world-3d"), { ssr: false, loading: () => <FloatingWorld /> });
 
 export default function Home() {
   const [filter, setFilter] = useState("All");
