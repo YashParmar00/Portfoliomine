@@ -49,7 +49,7 @@ Read these before changing the design or creating assets:
 
 ## Asset status
 
-The SVG portal, robot and floating-island concept illustrations are created and integrated. They are 2D visual assets, not final Blender models. The canonical Yash avatar, production 3D robot, 3D portal, full environment, project-specific renders and editable Blender source files remain planned. Their status is recorded in the asset manifest; do not represent planned work as completed.
+The hero now contains an interactive procedural 3D scene built with React Three Fiber / Three.js: a luminous YP ring portal, floating garden island, stylized creator blockout, robot companion, sparkles, lighting, contact shadows and pointer parallax. It has a reduced-motion mode and SVG fallback. These are runtime procedural meshes, not authored Blender / GLB assets; the final detailed character, rigging, modular environments and editable Blender source files remain planned. Their status is recorded in the asset manifest; do not represent planned work as completed.
 
 ## Project content integrity
 
