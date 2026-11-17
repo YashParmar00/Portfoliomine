@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "project": "Yash Parmar Portfolio",
+  "visualBible": "design-system/asset-bible.md",
+  "referenceRegister": "design-system/references.md",
+  "statusLegend": ["planned", "in-progress", "created", "integrated", "verified"],
+  "assets": [
+    {"id":"YASH-01","name":"Yash creator avatar","source":"Blender","exports":["GLB"],"status":"planned","canonical":"cream hoodie, dark trousers, white sneakers, headphones, dark wavy hair, YP mark"},
+    {"id":"ROBOT-01","name":"Robot companion","source":"Blender","exports":["GLB"],"status":"planned","canonical":"rounded pearl-white shell, dark face panel, two cyan eyes, violet accents"},
+    {"id":"PORTAL-01","name":"YP portal","source":"Blender","exports":["GLB"],"status":"planned","canonical":"concentric pearl-metal rings, violet/lavender emissive strips, pink/coral and cyan accents, centered YP"},
+    {"id":"WORLD-01","name":"Floating world environment","source":"Blender","exports":["GLB","WebP"],"status":"planned","canonical":"pastel sky, soft clouds, distant mountains, floating garden islands, waterfalls"},
+    {"id":"ISLAND-01","name":"Modular island kit","source":"Blender","exports":["GLB"],"status":"planned","canonical":"layered stone underside, grass, flowers, shrubs, trees"},
+    {"id":"PROJECT-01","name":"Project universe scenes","source":"Blender + real project captures","exports":["GLB","WebP"],"status":"planned","canonical":"distinct destination scene per verified project"},
+    {"id":"ICONS-01","name":"Portfolio SVG icon family","source":"SVG","exports":["SVG"],"status":"in-progress","canonical":"consistent stroke weight, violet/cyan/coral accents"}
+  ],
+  "qualityGates": {
+    "identityConsistency": true,
+    "paletteConsistency": true,
+    "referenceComparison": true,
+    "responsiveReview": true,
+    "reducedMotionFallback": true,
+    "sourceAndLicenseRecorded": true
+  }
+}
