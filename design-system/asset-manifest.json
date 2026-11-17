@@ -120,6 +120,27 @@
       "status": "integrated",
       "file": "src/components/portfolio-world-3d.tsx",
       "canonical": "Pearl-white rounded shell, dark face panel, cyan eyes and violet antenna"
+    },
+    {
+      "id": "PROJECT-VIGNETTES-01",
+      "name": "Eight original project destination illustrations",
+      "source": "Hand-authored SVG",
+      "exports": [
+        "SVG"
+      ],
+      "status": "integrated",
+      "files": [
+        "public/projects/aicaption-scene.svg",
+        "public/projects/preta-scene.svg",
+        "public/projects/printoll-scene.svg",
+        "public/projects/auramarts-scene.svg",
+        "public/projects/chess-scene.svg",
+        "public/projects/io-game-scene.svg",
+        "public/projects/keychains-scene.svg",
+        "public/projects/vn-odedra-scene.svg"
+      ],
+      "dimensions": "720 × 440 px viewBox each; 18:11",
+      "canonical": "Distinct pastel 2.5D vignette per project. Illustrative concept art only, never presented as a real product screenshot."
     }
   ],
   "qualityGates": {
