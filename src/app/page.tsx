@@ -163,10 +163,10 @@ export default function Home() {
       <section className="hero" id="home">
         <div className="hero-copy">
           <div className="hello-pill"><span>✦</span> HELLO, I&apos;M YASH <i /></div>
-          <h1>I build digital<br/>things <em>beyond<br/>limits.</em></h1>
+          <h1>I build digital<br/>products <em>beyond<br/>limits.</em></h1>
           <p className="hero-description">I turn ambitious ideas into real digital experiences — software products, AI tools, automated systems, games and 3D worlds.</p>
           <div className="hero-buttons"><a className="button button-primary" href="#work">Explore my work <ArrowRight size={17}/></a><a className="button button-soft" href="#contact">Let&apos;s collaborate <Sparkles size={16}/></a></div>
-          <div className="hero-facts"><div><strong>01.9+</strong><span>Years building</span></div><i/><div><strong>Many</strong><span>Ideas explored</span></div><i/><div><strong>5</strong><span>Creative domains</span></div></div>
+          <div className="hero-facts"><div><strong>1.9+</strong><span>Years building</span></div><i/><div><strong>08</strong><span>Projects & experiments</span></div><i/><div><strong>06</strong><span>Creative disciplines</span></div></div>
           <a className="scroll-cue" href="#about"><MousePointer2 size={15}/> SCROLL TO EXPLORE <ArrowDown size={15}/></a>
         </div>
         <PortfolioWorld3D />
@@ -180,7 +180,7 @@ export default function Home() {
       </section>
 
       <section className="work section-pad" id="work">
-        <div className="work-heading"><div><div className="eyebrow">02 / SELECTED BUILDS & EXPERIMENTS</div><h2>A universe of<br/><em>things I&apos;ve built.</em></h2><p>Products, platforms, games and creative experiments. More worlds are being added.</p></div><div className="work-index"><strong>∞</strong><span>PROJECTS IN PROGRESS</span></div></div>
+        <div className="work-heading"><div><div className="eyebrow">02 / SELECTED BUILDS & EXPERIMENTS</div><h2>A universe of<br/><em>things I&apos;ve built.</em></h2><p>Products, platforms, games and creative experiments. More worlds are being added.</p></div><div className="work-index"><strong>08</strong><span>PROJECTS & EXPERIMENTS</span></div></div>
         <div className="filters" role="group" aria-label="Filter projects">{categories.map((category) => <button key={category} className={filter === category ? "filter-chip selected" : "filter-chip"} onClick={() => setFilter(category)} aria-pressed={filter === category}>{category}</button>)}</div>
         <div className="project-grid">
           {visibleProjects.map((project, index) => (
