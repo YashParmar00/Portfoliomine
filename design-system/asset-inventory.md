@@ -32,3 +32,20 @@ Record: asset ID, filename, source file, dimensions / polygon count, texture dim
 
 ## Original reference PNGs
 See `references.md` for the seven uploaded reference images and dimensions. Their binary contents have not yet been committed to `public/design-references/`; copy them there as the next asset-ingestion step. Do not mark them as present until GitHub confirms those files exist.
+
+
+## Integrated procedural 3D scene (November 2026)
+
+| Asset ID | File | Current state | Important limitation |
+|---|---|---|---|
+| WORLD-3D-01 | `src/components/portfolio-world-3d.tsx` | Integrated in hero with React Three Fiber | Procedural realtime meshes; no Blender source / GLB export |
+| AVATAR-3D-01 | `src/components/portfolio-world-3d.tsx` | Stylized 3D blockout | Not a final detailed likeness, rigged character or animation set |
+| ROBOT-3D-01 | `src/components/portfolio-world-3d.tsx` | Integrated 3D companion | Procedural model; separate Blender source not yet authored |
+| PORTAL-01 | `src/components/portfolio-world-3d.tsx` + `public/illustrations/yp-portal.svg` | Integrated 3D ring portal and 2D fallback art | No editable Blender master yet |
+| WORLD-01 | `src/components/portfolio-world-3d.tsx` + `public/illustrations/floating-island.svg` | Integrated floating garden island | Modular environment and high-detail waterfall assets remain planned |
+
+The scene includes a camera, ambient / directional / point lighting, pointer parallax, slow portal rotation, a floating island, a stylized avatar, a robot hover animation, sparkles, contact shadows, reduced-motion behavior and a static SVG fallback.
+
+## Existing icon family
+
+The current repository includes `public/icons/yp-mark.svg`, `automation.svg`, `cube.svg`, `gamepad.svg` and `sparkle.svg`. Keep their visual weight and pastel accent language consistent when extending the icon set.
