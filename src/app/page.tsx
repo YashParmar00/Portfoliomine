@@ -4,8 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowDown, ArrowRight, ArrowUpRight, Bot, Box, Code2, Github,
-  Gamepad2, Layers3, Menu, MousePointer2, Palette, Sparkles,
-  Workflow, X, Zap, ExternalLink
+  Gamepad2, Layers3, Menu, MousePointer2, Sparkles,
+  Workflow, X, ExternalLink
 } from "lucide-react";
 
 type Project = {
