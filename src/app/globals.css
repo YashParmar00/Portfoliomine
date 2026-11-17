@@ -98,3 +98,17 @@
   .world-3d .tag-three{top:34%;right:-3%}
   .world-3d .tag-four{top:46%;right:1%}
 }
+
+
+/* Distinct project destination artwork — authored illustrations, never fake product screenshots */
+.project-art{isolation:isolate;min-height:150px}
+.project-art>img,.dialog-art>img{position:absolute!important;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.project-art-overlay{position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,#1c204012 0%,transparent 45%,#28224c55 100%);pointer-events:none}
+.project-tile:hover .project-art>img{transform:scale(1.055)}
+.art-kind{z-index:2}
+.art-launch{z-index:3}
+.art-concept{position:absolute;z-index:2;bottom:10px;left:12px;padding:5px 8px;border:1px solid #ffffff8c;border-radius:30px;background:#fff9;color:#5d527f;font:7px 'DM Mono';letter-spacing:.8px}
+.dialog-art{position:relative;overflow:hidden}
+.dialog-art .project-art-overlay{background:linear-gradient(180deg,#1c204000 40%,#28224c22 100%)}
+@media(max-width:760px){.project-art{min-height:112px}.art-concept{bottom:8px;left:9px;font-size:6px}}
+@media(max-width:390px){.project-art{min-height:155px}}
