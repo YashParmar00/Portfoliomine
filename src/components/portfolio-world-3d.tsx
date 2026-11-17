@@ -1,6 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
+import Image from "next/image";
 import { ContactShadows, Float, Sparkles } from "@react-three/drei";
 import { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
@@ -240,11 +241,11 @@ export default function PortfolioWorld3D() {
         dpr={[1, 1.5]}
         camera={{ position: [0, 0.55, 9.6], fov: 37 }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-        fallback={<div className="scene-static-fallback"><img src="/illustrations/floating-island.svg" alt="" /><img src="/illustrations/yp-portal.svg" alt="" /></div>}
+        fallback={<div className="scene-static-fallback"><Image src="/illustrations/floating-island.svg" alt="" width={900} height={560} unoptimized /><Image src="/illustrations/yp-portal.svg" alt="" width={900} height={900} unoptimized /></div>}
       >
         <Suspense fallback={null}><Scene reduced={reduced} /></Suspense>
       </Canvas>
-      <div className="world-panel panel-code"><small>✳ &nbsp; BUILD / CREATE</small><strong>const idea = "possible";</strong><span>design → develop → launch</span></div>
+      <div className="world-panel panel-code"><small>✳ &nbsp; BUILD / CREATE</small><strong>const idea = &quot;possible&quot;;</strong><span>design → develop → launch</span></div>
       <div className="world-panel panel-ai"><small>AI SYSTEMS</small><strong>Thinking beyond.</strong></div>
       <div className="world-tag tag-one">〈/〉 &nbsp; SOFTWARE</div>
       <div className="world-tag tag-two">✧ &nbsp; AI + AUTOMATION</div>
