@@ -74,7 +74,7 @@
 
 /* Procedural WebGL hero — responsive canvas and graceful fallback */
 .world-3d{isolation:isolate;background:radial-gradient(ellipse at 50% 40%,#e9e0ff88,transparent 62%);border-radius:48%;overflow:visible}
-.world-3d>div:first-child:not(.world-glow){position:absolute!important;inset:0!important}
+.world-3d>div:nth-child(2){position:absolute!important;inset:0!important;width:100%!important;height:100%!important}
 .world-3d canvas{position:absolute;inset:0;width:100%!important;height:100%!important;outline:0}
 .world-3d .world-glow{z-index:-1}
 .world-3d .world-panel,.world-3d .world-tag{z-index:5}
