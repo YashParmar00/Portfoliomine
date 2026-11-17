@@ -28,7 +28,7 @@ npm run build
 ## Current experience
 
 - Responsive home, about, project archive, capabilities, toolkit, creative lab and contact sections
-- Filterable project collection with accessible detail dialogs
+- Filterable project collection with eight unique authored SVG project vignettes, concept-art labels and accessible detail dialogs
 - Active-section navigation, scroll progress, pointer-follow accent and keyboard Escape support
 - Canonical SVG scene assets integrated into the hero: YP portal, floating island and robot companion
 - Light pastel palette, responsive layout and reduced-motion rules
