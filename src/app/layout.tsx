@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yashparmar.dev"),
   title: {
     default: "Yash Parmar — Software Developer, AI Builder & Digital Creator",
     template: "%s | Yash Parmar"
