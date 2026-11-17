@@ -57,6 +57,13 @@ The hero now contains an interactive procedural 3D scene built with React Three 
 
 The archive currently includes AICAPTION, Preta, Printoll, Auramarts, Chess Game, IO Game, Handmade Keychains and V.N. ODEDRA Vision. Descriptions intentionally avoid unverified metrics, client counts, live URLs and testimonials. IO Game is marked in progress. Add case-study links and screenshots only after verifying the source material.
 
+## Production safeguards
+
+- Security response headers are configured in `next.config.ts` (content-type sniffing, referrer policy, clickjacking protection, restricted browser permissions and opener isolation).
+- Next.js branded loading, not-found and route error recovery states are included.
+- `public/robots.txt` permits indexing; add a sitemap and canonical metadata only after the final production domain is confirmed.
+- No analytics, tracking pixels, contact form backend or third-party credentials are configured.
+
 ## Deployment
 
-Connect this repository to Vercel or another Next.js host. Set the final production domain in deployment settings before publishing canonical URLs or domain-specific verification records.
+Connect this repository to Vercel or another Next.js host. Set the final production domain in deployment settings before publishing canonical URLs or domain-specific verification records. After deployment, verify the live domain, metadata previews, mobile layouts, WebGL fallback, browser console and response headers.
