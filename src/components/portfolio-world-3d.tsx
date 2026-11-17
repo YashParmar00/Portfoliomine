@@ -110,50 +110,136 @@ function Island() {
 
 function Avatar() {
   return (
-    <group position={[-0.58, -0.82, 1.05]} rotation={[0, -0.16, 0]} scale={0.82}>
-      <mesh position={[0, 0.42, 0]} scale={[0.42, 0.55, 0.25]}>
+    <group position={[-0.58, -0.82, 0.92]} rotation={[0, -0.12, 0]} scale={0.82}>
+      <mesh position={[0, 0.36, 0]} scale={[0.43, 0.54, 0.27]}>
         <capsuleGeometry args={[0.35, 0.5, 8, 16]} />
         <meshStandardMaterial color="#f5eee8" roughness={0.9} />
       </mesh>
-      <mesh position={[0, 1.2, 0.02]} scale={[0.3, 0.35, 0.29]}>
+      <mesh position={[0, 0.79, 0.12]} rotation={[0.2, 0, 0]}>
+        <torusGeometry args={[0.22, 0.045, 8, 32, Math.PI]} />
+        <meshStandardMaterial color="#c8b9ef" roughness={0.55} />
+      </mesh>
+      <mesh position={[0, 1.16, 0.02]} scale={[0.3, 0.35, 0.29]}>
         <sphereGeometry args={[0.48, 32, 24]} />
         <meshStandardMaterial color="#bd8067" roughness={0.82} />
       </mesh>
-      <mesh position={[0, 1.45, -0.02]} scale={[0.33, 0.22, 0.31]}>
+      <mesh position={[0, 1.39, -0.02]} scale={[0.34, 0.22, 0.32]}>
         <sphereGeometry args={[0.5, 24, 16]} />
         <meshStandardMaterial color="#28253c" roughness={0.92} />
       </mesh>
-      <mesh position={[-0.1, 1.23, 0.285]}>
-        <sphereGeometry args={[0.025, 12, 12]} />
-        <meshBasicMaterial color="#26213a" />
-      </mesh>
-      <mesh position={[0.1, 1.23, 0.285]}>
-        <sphereGeometry args={[0.025, 12, 12]} />
-        <meshBasicMaterial color="#26213a" />
-      </mesh>
-      <mesh position={[0, 0.96, 0.04]} rotation={[0, 0, Math.PI / 2]}>
+      <mesh position={[-0.1, 1.17, 0.285]}><sphereGeometry args={[0.025, 12, 12]} /><meshBasicMaterial color="#26213a" /></mesh>
+      <mesh position={[0.1, 1.17, 0.285]}><sphereGeometry args={[0.025, 12, 12]} /><meshBasicMaterial color="#26213a" /></mesh>
+      <mesh position={[0, 0.91, 0.04]} rotation={[0, 0, Math.PI / 2]}>
         <torusGeometry args={[0.27, 0.035, 8, 32, Math.PI]} />
         <meshStandardMaterial color="#8d6ee8" />
       </mesh>
-      {[-0.19, 0.19].map((x) => <group key={x} position={[x, -0.38, 0]}>
-        <mesh position={[0, -0.38, 0]}>
-          <capsuleGeometry args={[0.1, 0.42, 6, 12]} />
-          <meshStandardMaterial color="#34344e" roughness={0.8} />
-        </mesh>
-        <mesh position={[0, -0.68, 0.07]} scale={[1.15, 0.5, 1.7]}>
-          <sphereGeometry args={[0.12, 16, 12]} />
-          <meshStandardMaterial color="#ffffff" roughness={0.6} />
-        </mesh>
-      </group>)}
-      {[-0.43, 0.43].map((x) => <mesh key={x} position={[x, 0.48, 0]} rotation={[0, 0, x]}>
-        <capsuleGeometry args={[0.09, 0.45, 6, 12]} />
+      <mesh position={[0, -0.03, -0.18]} scale={[0.55, 0.12, 0.4]}>
+        <sphereGeometry args={[1, 24, 16]} />
+        <meshStandardMaterial color="#8d7cc0" roughness={0.8} />
+      </mesh>
+      <mesh position={[-0.2, -0.03, 0.27]} rotation={[Math.PI / 2, 0, 0.08]}>
+        <capsuleGeometry args={[0.12, 0.52, 8, 16]} />
+        <meshStandardMaterial color="#35354f" roughness={0.85} />
+      </mesh>
+      <mesh position={[0.2, -0.03, 0.27]} rotation={[Math.PI / 2, 0, -0.08]}>
+        <capsuleGeometry args={[0.12, 0.52, 8, 16]} />
+        <meshStandardMaterial color="#35354f" roughness={0.85} />
+      </mesh>
+      <mesh position={[-0.2, -0.24, 0.58]} rotation={[0.65, 0, 0]}>
+        <capsuleGeometry args={[0.105, 0.38, 8, 16]} />
+        <meshStandardMaterial color="#35354f" roughness={0.85} />
+      </mesh>
+      <mesh position={[0.2, -0.24, 0.58]} rotation={[0.65, 0, 0]}>
+        <capsuleGeometry args={[0.105, 0.38, 8, 16]} />
+        <meshStandardMaterial color="#35354f" roughness={0.85} />
+      </mesh>
+      <mesh position={[-0.2, -0.38, 0.77]} rotation={[0.15, 0, 0]}>
+        <boxGeometry args={[0.22, 0.12, 0.34]} />
+        <meshStandardMaterial color="#ffffff" roughness={0.65} />
+      </mesh>
+      <mesh position={[0.2, -0.38, 0.77]} rotation={[0.15, 0, 0]}>
+        <boxGeometry args={[0.22, 0.12, 0.34]} />
+        <meshStandardMaterial color="#ffffff" roughness={0.65} />
+      </mesh>
+      {[-0.4, 0.4].map((x) => <mesh key={x} position={[x, 0.48, 0.24]} rotation={[0.9, 0, x * 0.6]}>
+        <capsuleGeometry args={[0.09, 0.42, 6, 12]} />
         <meshStandardMaterial color="#f4eee9" roughness={0.9} />
       </mesh>)}
-      <mesh position={[0.03, 0.1, 0.26]} rotation={[0.15, 0, 0]}>
-        <boxGeometry args={[0.42, 0.3, 0.035]} />
-        <meshStandardMaterial color="#33334d" roughness={0.4} />
+    </group>
+  );
+}
+
+function Workstation() {
+  return (
+    <group position={[0.08, -0.48, 2.15]}>
+      <mesh position={[0, 0.42, 0]} scale={[1.45, 0.07, 0.48]}>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="#f9f4ff" roughness={0.38} metalness={0.12} />
+      </mesh>
+      <mesh position={[0, 0.35, 0.02]} scale={[1.48, 0.035, 0.5]}>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="#9b83e8" emissive="#8b6bdf" emissiveIntensity={0.18} />
+      </mesh>
+      {[-1.18, 1.18].map((x) => <mesh key={x} position={[x, -0.02, 0]} rotation={[0, 0, 0.02]}>
+        <cylinderGeometry args={[0.045, 0.055, 0.88, 12]} />
+        <meshStandardMaterial color="#d5c8f2" metalness={0.55} roughness={0.3} />
+      </mesh>)}
+      <mesh position={[0, 1.03, -0.22]} scale={[0.82, 0.49, 0.08]}>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="#252844" metalness={0.35} roughness={0.25} />
+      </mesh>
+      <mesh position={[0, 1.03, -0.13]} scale={[0.75, 0.41, 0.012]}>
+        <planeGeometry args={[1, 1]} />
+        <meshBasicMaterial color="#4a4b84" />
+      </mesh>
+      <mesh position={[-0.28, 1.08, -0.11]} scale={[0.12, 0.1, 0.015]}>
+        <planeGeometry args={[1, 1]} />
+        <meshBasicMaterial color="#83e6e6" />
+      </mesh>
+      <mesh position={[0.18, 1.1, -0.11]} scale={[0.28, 0.018, 0.015]}>
+        <planeGeometry args={[1, 1]} />
+        <meshBasicMaterial color="#f6a6d1" />
+      </mesh>
+      <mesh position={[0.18, 1.02, -0.11]} scale={[0.34, 0.015, 0.015]}>
+        <planeGeometry args={[1, 1]} />
+        <meshBasicMaterial color="#b9a9ff" />
+      </mesh>
+      <mesh position={[0, 0.58, 0.2]} rotation={[-0.25, 0, 0]} scale={[0.48, 0.035, 0.3]}>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="#dce5ff" metalness={0.3} roughness={0.3} />
+      </mesh>
+      <mesh position={[0, 0.75, 0.05]} rotation={[-0.25, 0, 0]} scale={[0.48, 0.27, 0.035]}>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="#30334f" metalness={0.35} roughness={0.25} />
+      </mesh>
+      <mesh position={[0, 0.75, 0.072]} rotation={[-0.25, 0, 0]}>
+        <planeGeometry args={[0.42, 0.21]} />
+        <meshBasicMaterial color="#a6a2ff" />
       </mesh>
     </group>
+  );
+}
+
+function DistantIslands() {
+  return (
+    <>
+      {[-3.1, 3.05].map((x, index) => (
+        <group key={x} position={[x, 0.05 + index * 0.35, -1.6]} scale={0.5 + index * 0.08}>
+          <mesh scale={[1.05, 0.2, 0.62]}>
+            <sphereGeometry args={[1, 24, 16]} />
+            <meshStandardMaterial color="#b5e9d1" roughness={0.9} />
+          </mesh>
+          <mesh position={[0, -0.3, 0]} scale={[0.78, 0.48, 0.48]}>
+            <coneGeometry args={[1, 1, 7]} />
+            <meshStandardMaterial color="#82769e" flatShading roughness={0.95} />
+          </mesh>
+          <mesh position={[0, 0.32, 0]}>
+            <icosahedronGeometry args={[0.34, 1]} />
+            <meshStandardMaterial color={index ? "#f5b6d8" : "#8ed1a7"} roughness={0.95} />
+          </mesh>
+        </group>
+      ))}
+    </>
   );
 }
 
@@ -215,7 +301,9 @@ function Scene({ reduced }: { reduced: boolean }) {
         <Float speed={reduced ? 0 : 1.1} rotationIntensity={0.025} floatIntensity={reduced ? 0 : 0.14}>
           <Portal reduced={reduced} />
           <Island />
+          <DistantIslands />
           <Avatar />
+          <Workstation />
           <Robot />
         </Float>
         <Sparkles count={reduced ? 8 : 36} scale={[7, 5, 4]} size={2.5} speed={reduced ? 0 : 0.22} color="#ffffff" opacity={0.8} />
