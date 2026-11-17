@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import dynamic from "next/dynamic";
 import {
   ArrowDown, ArrowRight, ArrowUpRight, Bot, Box, Code2, Github,
   Gamepad2, Layers3, Menu, MousePointer2, Sparkles,
@@ -69,6 +70,8 @@ function FloatingWorld() {
     </div>
   );
 }
+
+const PortfolioWorld3D = dynamic(() => import("@/components/portfolio-world-3d"), { ssr: false, loading: () => <PortfolioWorld3D /> });
 
 export default function Home() {
   const [filter, setFilter] = useState("All");
