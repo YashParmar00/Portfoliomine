@@ -3,15 +3,124 @@
   "project": "Yash Parmar Portfolio",
   "visualBible": "design-system/asset-bible.md",
   "referenceRegister": "design-system/references.md",
-  "statusLegend": ["planned", "in-progress", "created", "integrated", "verified"],
+  "statusLegend": [
+    "planned",
+    "in-progress",
+    "created",
+    "integrated",
+    "verified"
+  ],
   "assets": [
-    {"id":"YASH-01","name":"Yash creator avatar","source":"Blender","exports":["BLEND","GLB"],"status":"planned","canonical":"cream hoodie, dark trousers, white sneakers, headphones, dark wavy hair, YP mark"},
-    {"id":"ROBOT-01","name":"Robot companion 2D vector concept","source":"SVG","exports":["SVG"],"status":"created","file":"public/illustrations/robot-companion.svg","canonical":"rounded pearl-white shell, dark face panel, two cyan eyes, violet accents; production 3D model still planned"},
-    {"id":"PORTAL-01","name":"YP portal 2D vector concept","source":"SVG","exports":["SVG"],"status":"created","file":"public/illustrations/yp-portal.svg","canonical":"concentric pearl-metal rings, violet/lavender emissive strips, pink/coral and cyan accents, centered YP; production 3D model still planned"},
-    {"id":"WORLD-01","name":"Floating island 2D vector concept","source":"SVG","exports":["SVG"],"status":"created","file":"public/illustrations/floating-island.svg","canonical":"pastel floating garden island, layered rock, grass, flowers and cyan waterfall; full 3D environment still planned"},
-    {"id":"ISLAND-01","name":"Modular island 3D kit","source":"Blender","exports":["BLEND","GLB"],"status":"planned","canonical":"layered stone underside, grass, flowers, shrubs, trees"},
-    {"id":"PROJECT-01","name":"Project universe scenes","source":"Blender + real project captures","exports":["BLEND","GLB","WebP"],"status":"planned","canonical":"distinct destination scene per verified project"},
-    {"id":"ICONS-01","name":"Portfolio SVG icon family","source":"SVG","exports":["SVG"],"status":"in-progress","canonical":"consistent stroke weight, violet/cyan/coral accents"}
+    {
+      "id": "YASH-01",
+      "name": "Yash creator avatar",
+      "source": "Blender",
+      "exports": [
+        "BLEND",
+        "GLB"
+      ],
+      "status": "planned",
+      "canonical": "cream hoodie, dark trousers, white sneakers, headphones, dark wavy hair, YP mark"
+    },
+    {
+      "id": "ROBOT-01",
+      "name": "Robot companion 2D vector concept",
+      "source": "SVG",
+      "exports": [
+        "SVG"
+      ],
+      "status": "created",
+      "file": "public/illustrations/robot-companion.svg",
+      "canonical": "rounded pearl-white shell, dark face panel, two cyan eyes, violet accents; production 3D model still planned"
+    },
+    {
+      "id": "PORTAL-01",
+      "name": "YP portal 2D vector concept",
+      "source": "SVG",
+      "exports": [
+        "SVG"
+      ],
+      "status": "created",
+      "file": "public/illustrations/yp-portal.svg",
+      "canonical": "concentric pearl-metal rings, violet/lavender emissive strips, pink/coral and cyan accents, centered YP; production 3D model still planned"
+    },
+    {
+      "id": "WORLD-01",
+      "name": "Floating island 2D vector concept",
+      "source": "SVG",
+      "exports": [
+        "SVG"
+      ],
+      "status": "created",
+      "file": "public/illustrations/floating-island.svg",
+      "canonical": "pastel floating garden island, layered rock, grass, flowers and cyan waterfall; full 3D environment still planned"
+    },
+    {
+      "id": "ISLAND-01",
+      "name": "Modular island 3D kit",
+      "source": "Blender",
+      "exports": [
+        "BLEND",
+        "GLB"
+      ],
+      "status": "planned",
+      "canonical": "layered stone underside, grass, flowers, shrubs, trees"
+    },
+    {
+      "id": "PROJECT-01",
+      "name": "Project universe scenes",
+      "source": "Blender + real project captures",
+      "exports": [
+        "BLEND",
+        "GLB",
+        "WebP"
+      ],
+      "status": "planned",
+      "canonical": "distinct destination scene per verified project"
+    },
+    {
+      "id": "ICONS-01",
+      "name": "Portfolio SVG icon family",
+      "source": "SVG",
+      "exports": [
+        "SVG"
+      ],
+      "status": "in-progress",
+      "canonical": "consistent stroke weight, violet/cyan/coral accents"
+    },
+    {
+      "id": "WORLD-3D-01",
+      "name": "Procedural interactive portfolio world",
+      "source": "React Three Fiber + Three.js",
+      "exports": [
+        "WebGL"
+      ],
+      "status": "integrated",
+      "file": "src/components/portfolio-world-3d.tsx",
+      "canonical": "Realtime scene with portal rings, floating garden island, stylized creator avatar, robot companion, lights, sparkles and pointer parallax; not a Blender source or GLB export"
+    },
+    {
+      "id": "AVATAR-3D-01",
+      "name": "Stylized creator avatar blockout",
+      "source": "Procedural Three.js meshes",
+      "exports": [
+        "WebGL"
+      ],
+      "status": "in-progress",
+      "file": "src/components/portfolio-world-3d.tsx",
+      "canonical": "Cream hoodie, dark trousers, warm skin and dark hair blockout; not a likeness or final rigged model"
+    },
+    {
+      "id": "ROBOT-3D-01",
+      "name": "Robot companion procedural model",
+      "source": "Procedural Three.js meshes",
+      "exports": [
+        "WebGL"
+      ],
+      "status": "integrated",
+      "file": "src/components/portfolio-world-3d.tsx",
+      "canonical": "Pearl-white rounded shell, dark face panel, cyan eyes and violet antenna"
+    }
   ],
   "qualityGates": {
     "identityConsistency": true,
@@ -19,6 +128,10 @@
     "referenceComparison": true,
     "responsiveReview": true,
     "reducedMotionFallback": true,
-    "sourceAndLicenseRecorded": true
+    "sourceAndLicenseRecorded": true,
+    "webglHeroImplemented": true,
+    "staticFallbackImplemented": true,
+    "reducedMotionImplemented": true,
+    "productionVisualQa": "pending"
   }
 }
