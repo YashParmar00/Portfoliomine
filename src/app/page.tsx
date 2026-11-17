@@ -1,11 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowDown, ArrowRight, ArrowUpRight, Bot, Box, Code2, Github,
   Gamepad2, Layers3, Menu, MousePointer2, Palette, Sparkles,
-  Workflow, X, Zap
+  Workflow, X, Zap, ExternalLink
 } from "lucide-react";
 
 type Project = {
@@ -51,8 +51,8 @@ function FloatingWorld() {
       <div className="world-glow" />
       <div className="world-orbit orbit-a" />
       <div className="world-orbit orbit-b" />
-      <div className="world-portal"><div className="portal-core">YP<span>✦</span></div></div>
-      <div className="world-island island-main"><i /><b /><span /></div>
+      <div className="world-portal"><img src="/illustrations/yp-portal.svg" alt="" className="scene-portal-art" /><div className="portal-core">YP<span>✦</span></div></div>
+      <div className="world-island island-main"><img src="/illustrations/floating-island.svg" alt="" className="scene-island-art" /><i /><b /><span /></div>
       <div className="world-island island-left"><i /><b /></div>
       <div className="world-island island-right"><i /><b /></div>
       <div className="world-cloud cloud-a" /><div className="world-cloud cloud-b" />
@@ -61,7 +61,7 @@ function FloatingWorld() {
       <div className="world-panel panel-code"><small>✳ &nbsp; BUILD / CREATE</small><strong>const idea = "possible";</strong><span>design → develop → launch</span></div>
       <div className="world-panel panel-ai"><Bot size={18}/><small>AI SYSTEMS</small><strong>Thinking beyond.</strong></div>
       <div className="creator"><div className="creator-hair"/><div className="creator-face"><i/><i/></div><div className="creator-shirt">YP</div><div className="creator-leg leg-left"/><div className="creator-leg leg-right"/></div>
-      <div className="world-bot"><div className="bot-face"><i/><i/></div><div className="bot-body">✦</div></div>
+      <div className="world-bot"><img src="/illustrations/robot-companion.svg" alt="Robot companion" className="scene-robot-art" /></div>
       <div className="world-tag tag-one">〈/〉 &nbsp; SOFTWARE</div>
       <div className="world-tag tag-two">✧ &nbsp; AI + AUTOMATION</div>
       <div className="world-tag tag-three">◈ &nbsp; GAME WORLDS</div>
@@ -74,6 +74,8 @@ export default function Home() {
   const [filter, setFilter] = useState("All");
   const [selected, setSelected] = useState<Project | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const [pointer, setPointer] = useState({ x: -100, y: -100, visible: false });
   const categories = ["All", "Web & SaaS", "AI & SaaS", "Commerce", "Games", "Creative"];
   const visibleProjects = useMemo(
     () => filter === "All" ? projects : projects.filter((project) => project.category === filter),
@@ -83,13 +85,42 @@ export default function Home() {
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const links = ["About", "Work", "Capabilities", "Toolkit", "Lab", "Contact"];
 
+  useEffect(() => {
+    const sections = ["home", "about", "work", "capabilities", "toolkit", "lab", "contact"]
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section));
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setActiveSection(visible.target.id);
+    }, { rootMargin: "-25% 0px -55% 0px", threshold: [0, 0.15, 0.35, 0.6] });
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { setSelected(null); setMenuOpen(false); }
+    };
+    const onPointerMove = (event: PointerEvent) => setPointer({ x: event.clientX, y: event.clientY, visible: true });
+    const onPointerLeave = () => setPointer((current) => ({ ...current, visible: false }));
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    document.addEventListener("pointerleave", onPointerLeave);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("pointermove", onPointerMove);
+      document.removeEventListener("pointerleave", onPointerLeave);
+    };
+  }, []);
+
   return (
     <main>
+      <motion.div className="cursor-orb" animate={{ x: pointer.x - 13, y: pointer.y - 13, opacity: pointer.visible ? 1 : 0 }} transition={{ type: "spring", damping: 28, stiffness: 350 }} aria-hidden="true" />
       <motion.div className="reading-progress" style={{ width: progressWidth }} />
       <header className="site-header">
         <a className="identity" href="#home"><span className="identity-mark">YP</span><span>Yash Parmar<small>DIGITAL CREATOR</small></span></a>
         <nav className={menuOpen ? "navigation navigation-open" : "navigation"}>
-          {links.map((link) => <a key={link} href={`#${link.toLowerCase()}`} onClick={() => setMenuOpen(false)}>{link}</a>)}
+          {links.map((link) => <a key={link} className={activeSection === link.toLowerCase() ? "nav-active" : ""} href={`#${link.toLowerCase()}`} onClick={() => setMenuOpen(false)}>{link}</a>)}
         </nav>
         <a className="header-cta" href="#contact">Let's build <ArrowUpRight size={15}/></a>
         <button className="menu-button" aria-label="Toggle navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</button>
@@ -142,10 +173,10 @@ export default function Home() {
         <div className="lab-copy"><div className="eyebrow">05 / THE EXPERIMENT ZONE</div><h2>Curiosity lives<br/>in the <em>lab.</em></h2><p>Not every idea begins as a product. This is where prototypes, AI workflows, 3D experiments, game mechanics and unusual concepts get explored.</p><a className="button button-primary" href="#contact">Build an experiment <ArrowUpRight size={17}/></a></div>
       </section>
 
-      <section className="contact" id="contact"><div className="contact-sun">YP<span>✦</span></div><div className="eyebrow">06 / YOUR IDEA, NEXT</div><h2>Let's build something<br/><em>that matters.</em></h2><p>Have a product idea, an ambitious problem or a creative experiment? Let's turn it into something real.</p><a className="button button-light" href="mailto:hello@yashparmar.dev">Start a conversation <ArrowUpRight size={17}/></a><div className="contact-footer"><span>YASH PARMAR © 2026</span><span>BUILT WITH CURIOSITY & CODE</span><a href="https://github.com/YashParmar00" target="_blank" rel="noreferrer"><Github size={15}/> GITHUB</a></div></section>
+      <section className="contact" id="contact"><div className="contact-sun">YP<span>✦</span></div><div className="eyebrow">06 / YOUR IDEA, NEXT</div><h2>Let's build something<br/><em>that matters.</em></h2><p>Have a product idea, an ambitious problem or a creative experiment? Let's turn it into something real.</p><a className="button button-light" href="https://github.com/YashParmar00" target="_blank" rel="noreferrer">Connect on GitHub <ExternalLink size={16}/></a><div className="contact-footer"><span>YASH PARMAR © 2026</span><span>BUILT WITH CURIOSITY & CODE</span><a href="https://github.com/YashParmar00" target="_blank" rel="noreferrer"><Github size={15}/> GITHUB</a></div></section>
       <footer className="site-footer"><a className="identity" href="#home"><span className="identity-mark">YP</span><span>Yash Parmar<small>DIGITAL CREATOR</small></span></a><span>Made to explore. Built to perform.</span><a href="#home">BACK TO TOP ↑</a></footer>
 
-      {selected && <div className="modal-backdrop" onClick={() => setSelected(null)}><motion.div className="project-dialog" role="dialog" aria-modal="true" aria-label={selected.name} onClick={(event) => event.stopPropagation()} initial={{ opacity: 0, scale: .96, y: 18 }} animate={{ opacity: 1, scale: 1, y: 0 }}><button className="dialog-close" aria-label="Close project details" onClick={() => setSelected(null)}><X/></button><div className={`dialog-art tone-${selected.tone}`}><span>{selected.mark}</span></div><div className="eyebrow">PROJECT / {selected.status.toUpperCase()}</div><h2>{selected.name}</h2><p>{selected.description}</p><div className="dialog-stack"><small>TECHNOLOGY / DISCIPLINES</small><span>{selected.stack}</span></div><small className="dialog-note">Detailed case study, verified screenshots, demo and source links will be added as project materials are connected.</small></motion.div></div>}
+      {selected && <div className="modal-backdrop" onClick={() => setSelected(null)}><motion.div className="project-dialog" role="dialog" aria-modal="true" aria-label={selected.name} onClick={(event) => event.stopPropagation()} initial={{ opacity: 0, scale: .96, y: 18 }} animate={{ opacity: 1, scale: 1, y: 0 }}><button className="dialog-close" aria-label="Close project details" onClick={() => setSelected(null)}><X/></button><div className={`dialog-art tone-${selected.tone}`}><span>{selected.mark}</span></div><div className="eyebrow">PROJECT / {selected.status.toUpperCase()}</div><h2>{selected.name}</h2><p>{selected.description}</p><div className="dialog-stack"><small>TECHNOLOGY / DISCIPLINES</small><span>{selected.stack}</span></div><small className="dialog-note">This project entry is intentionally limited to verified information. Detailed case studies and live demos will appear as original materials are added.</small></motion.div></div>}
     </main>
   );
 }
