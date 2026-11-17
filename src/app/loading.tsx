@@ -1,9 +1,9 @@
 export default function Loading() {
   return (
-    <main aria-label="Loading portfolio" className="min-h-screen grid place-items-center" style={{ background: "#fffaf9", color: "#8051ed" }}>
-      <div className="text-center">
-        <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-2xl text-lg font-bold text-white" style={{ background: "linear-gradient(140deg,#8051ed,#d879d4)" }}>YP</div>
-        <p className="text-xs font-semibold tracking-[.22em]">ENTERING THE UNIVERSE…</p>
+    <main aria-label="Loading portfolio" style={{ minHeight: "100vh", display: "grid", placeItems: "center", background: "#fffaf9", color: "#8051ed", fontFamily: "Arial, sans-serif" }}>
+      <div style={{ textAlign: "center" }}>
+        <div style={{ width: 56, height: 56, margin: "0 auto 16px", display: "grid", placeItems: "center", borderRadius: 16, color: "white", fontSize: 18, fontWeight: 700, background: "linear-gradient(140deg,#8051ed,#d879d4)" }}>YP</div>
+        <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: 3 }}>ENTERING THE UNIVERSE…</p>
       </div>
     </main>
   );
