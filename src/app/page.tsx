@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import dynamic from "next/dynamic";
 import {
@@ -79,6 +79,8 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [pointer, setPointer] = useState({ x: -100, y: -100, visible: false });
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const categories = ["All", "Web & SaaS", "AI & SaaS", "Commerce", "Games", "Creative"];
   const visibleProjects = useMemo(
     () => filter === "All" ? projects : projects.filter((project) => project.category === filter),
@@ -87,6 +89,33 @@ export default function Home() {
   const { scrollYProgress } = useScroll();
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const links = ["About", "Work", "Capabilities", "Toolkit", "Lab", "Contact"];
+
+  useEffect(() => {
+    if (!selected) return;
+    const previous = document.activeElement as HTMLElement | null;
+    const dialog = dialogRef.current;
+    const focusable = () => Array.from(dialog?.querySelectorAll<HTMLElement>('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])') ?? []);
+    closeButtonRef.current?.focus();
+    const trapFocus = (event: KeyboardEvent) => {
+      if (event.key !== "Tab") return;
+      const items = focusable();
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", trapFocus);
+    return () => {
+      document.removeEventListener("keydown", trapFocus);
+      previous?.focus?.();
+    };
+  }, [selected]);
 
   useEffect(() => {
     const sections = ["home", "about", "work", "capabilities", "toolkit", "lab", "contact"]
@@ -122,11 +151,11 @@ export default function Home() {
       <motion.div className="reading-progress" style={{ width: progressWidth }} />
       <header className="site-header">
         <a className="identity" href="#home"><span className="identity-mark">YP</span><span>Yash Parmar<small>DIGITAL CREATOR</small></span></a>
-        <nav className={menuOpen ? "navigation navigation-open" : "navigation"}>
+        <nav id="main-navigation" className={menuOpen ? "navigation navigation-open" : "navigation"}>
           {links.map((link) => <a key={link} className={activeSection === link.toLowerCase() ? "nav-active" : ""} href={`#${link.toLowerCase()}`} onClick={() => setMenuOpen(false)}>{link}</a>)}
         </nav>
         <a className="header-cta" href="#contact">Let's build <ArrowUpRight size={15}/></a>
-        <button className="menu-button" aria-label="Toggle navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</button>
+        <button className="menu-button" aria-label="Toggle navigation" aria-expanded={menuOpen} aria-controls="main-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</button>
       </header>
 
       <section className="hero" id="home">
@@ -150,7 +179,7 @@ export default function Home() {
 
       <section className="work section-pad" id="work">
         <div className="work-heading"><div><div className="eyebrow">02 / SELECTED BUILDS & EXPERIMENTS</div><h2>A universe of<br/><em>things I've built.</em></h2><p>Products, platforms, games and creative experiments. More worlds are being added.</p></div><div className="work-index"><strong>∞</strong><span>PROJECTS IN PROGRESS</span></div></div>
-        <div className="filters" role="group" aria-label="Filter projects">{categories.map((category) => <button key={category} className={filter === category ? "filter-chip selected" : "filter-chip"} onClick={() => setFilter(category)}>{category}</button>)}</div>
+        <div className="filters" role="group" aria-label="Filter projects">{categories.map((category) => <button key={category} className={filter === category ? "filter-chip selected" : "filter-chip"} onClick={() => setFilter(category)} aria-pressed={filter === category}>{category}</button>)}</div>
         <div className="project-grid">
           {visibleProjects.map((project, index) => (
             <motion.button key={project.name} layout className={`project-tile tone-${project.tone}`} onClick={() => setSelected(project)} initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .15 }} transition={{ duration: .45, delay: index * .04 }}>
@@ -179,7 +208,7 @@ export default function Home() {
       <section className="contact" id="contact"><div className="contact-sun">YP<span>✦</span></div><div className="eyebrow">06 / YOUR IDEA, NEXT</div><h2>Let's build something<br/><em>that matters.</em></h2><p>Have a product idea, an ambitious problem or a creative experiment? Let's turn it into something real.</p><a className="button button-light" href="https://github.com/YashParmar00" target="_blank" rel="noreferrer">Connect on GitHub <ExternalLink size={16}/></a><div className="contact-footer"><span>YASH PARMAR © 2026</span><span>BUILT WITH CURIOSITY & CODE</span><a href="https://github.com/YashParmar00" target="_blank" rel="noreferrer"><Github size={15}/> GITHUB</a></div></section>
       <footer className="site-footer"><a className="identity" href="#home"><span className="identity-mark">YP</span><span>Yash Parmar<small>DIGITAL CREATOR</small></span></a><span>Made to explore. Built to perform.</span><a href="#home">BACK TO TOP ↑</a></footer>
 
-      {selected && <div className="modal-backdrop" onClick={() => setSelected(null)}><motion.div className="project-dialog" role="dialog" aria-modal="true" aria-label={selected.name} onClick={(event) => event.stopPropagation()} initial={{ opacity: 0, scale: .96, y: 18 }} animate={{ opacity: 1, scale: 1, y: 0 }}><button className="dialog-close" aria-label="Close project details" onClick={() => setSelected(null)}><X/></button><div className={`dialog-art tone-${selected.tone}`}><span>{selected.mark}</span></div><div className="eyebrow">PROJECT / {selected.status.toUpperCase()}</div><h2>{selected.name}</h2><p>{selected.description}</p><div className="dialog-stack"><small>TECHNOLOGY / DISCIPLINES</small><span>{selected.stack}</span></div><small className="dialog-note">This project entry is intentionally limited to verified information. Detailed case studies and live demos will appear as original materials are added.</small></motion.div></div>}
+      {selected && <div className="modal-backdrop" onClick={() => setSelected(null)}><motion.div ref={dialogRef} className="project-dialog" role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" onClick={(event) => event.stopPropagation()} initial={{ opacity: 0, scale: .96, y: 18 }} animate={{ opacity: 1, scale: 1, y: 0 }}><button ref={closeButtonRef} className="dialog-close" aria-label="Close project details" onClick={() => setSelected(null)}><X/></button><div className={`dialog-art tone-${selected.tone}`}><span>{selected.mark}</span></div><div className="eyebrow">PROJECT / {selected.status.toUpperCase()}</div><h2 id="project-dialog-title">{selected.name}</h2><p>{selected.description}</p><div className="dialog-stack"><small>TECHNOLOGY / DISCIPLINES</small><span>{selected.stack}</span></div><small className="dialog-note">This project entry is intentionally limited to verified information. Detailed case studies and live demos will appear as original materials are added.</small></motion.div></div>}
     </main>
   );
 }
