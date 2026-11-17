@@ -39,6 +39,8 @@ npm run build
 Read these before changing the design or creating assets:
 
 - `design-system/asset-bible.md`
+- `design-system/icon-spec.md`
+- `design-system/project-art-spec.md`
 - `design-system/visual-spec.md`
 - `design-system/colors.md`
 - `design-system/typography.md`
